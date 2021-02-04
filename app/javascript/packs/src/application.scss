@@ -1,1 +1,5 @@
 @import "~bootstrap/scss/bootstrap";
+
+h1{color:orange;}
+.alert-alert { @extend .alert-warning; }
+.alert-notice { @extend .alert-success; }
