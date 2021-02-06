@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @fishing_area.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @fishing_area.description %>
+</p>
+
+<p>
+  <strong>Views:</strong>
+  <%= @fishing_area.views %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @fishing_area.user.email %>
+</p>
+
+<%= link_to 'Edit', edit_fishing_area_path(@fishing_area) %> |
+<%= link_to 'Back', fishing_areas_path %>
+
+<div class="container" style="margin-top: 2em">
+  <div class="row">
+
+  </div>
+</div>

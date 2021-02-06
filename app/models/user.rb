@@ -3,8 +3,14 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  has_many :fishing_areas
+
 
   def username
     email.split("@")[0].capitalize
+  end
+
+  def to_label
+    username
   end
 end
