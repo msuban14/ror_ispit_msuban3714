@@ -3,8 +3,7 @@ class ApplicationController < ActionController::Base
 
   private
   def is_admin!
-    if current_user and current_user.admin
-    else
+    unless current_user and current_user.admin
       redirect_to root_path,  alert: 'Your account does not have access to this page!'
     end
   end

@@ -1,7 +1,7 @@
 class FishingAreasController < ApplicationController
   before_action :set_fishing_area, only: %i[ show edit update destroy ]
-  #before_action :authenticate_user!, except: [:index, :show]
-  #before_action :is_admin!, [:index, :show]
+  before_action :authenticate_user!, except: [:index]
+  before_action :is_owner_or_admin, only: [:edit, :update, :destroy]
 
   # GET /fishing_areas or /fishing_areas.json
   def index
@@ -41,15 +41,17 @@ class FishingAreasController < ApplicationController
 
   # PATCH/PUT /fishing_areas/1 or /fishing_areas/1.json
   def update
-    respond_to do |format|
-      if @fishing_area.update(fishing_area_params)
-        format.html { redirect_to @fishing_area, notice: "Fishing area was successfully updated." }
-        format.json { render :show, status: :ok, location: @fishing_area }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @fishing_area.errors, status: :unprocessable_entity }
+
+      respond_to do |format|
+        if @fishing_area.update(fishing_area_params)
+          format.html { redirect_to @fishing_area, notice: "Fishing area was successfully updated." }
+          format.json { render :show, status: :ok, location: @fishing_area }
+        else
+          format.html { render :edit, status: :unprocessable_entity }
+          format.json { render json: @fishing_area.errors, status: :unprocessable_entity }
+        end
       end
-    end
+
   end
 
   # DELETE /fishing_areas/1 or /fishing_areas/1.json
@@ -70,5 +72,11 @@ class FishingAreasController < ApplicationController
     # Only allow a list of trusted parameters through.
     def fishing_area_params
       params.require(:fishing_area).permit(:name, :description, :thumbnail)
+    end
+
+    def is_owner_or_admin
+      unless current_user==@fishing_area.user or current_user.admin?
+        redirect_to root_path,  alert: 'Your account does not have access to this page!'
+      end
     end
 end

@@ -4,7 +4,7 @@
     <% @fishing_areas.each do |fishing_area| %>
     <div class="col">
       <div class="card h-100">
-        <img class="card-img-top" src="<%= url_for fishing_area.optimized_image(fishing_area.thumbnail, 220, 180) %>" alt="alt" />
+        <img class="card-img-top" src="<%= url_for fishing_area.optimized_image(fishing_area.thumbnail, 220, 180) %>" alt="fishing_area" />
         <div class="card-body">
           <h5 class="card-title">
             <%= link_to fishing_area.name, fishing_area , class: "stretched-link" %>
