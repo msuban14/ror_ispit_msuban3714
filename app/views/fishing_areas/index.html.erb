@@ -1,9 +1,9 @@
 <div class="container" style="margin-top: 2em">
   <%= will_paginate(@fishing_areas, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
-  <div class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="row row-cols-1 row-cols-md-3">
     <% @fishing_areas.each do |fishing_area| %>
-    <div class="col">
-      <div class="card h-100">
+    <div class="col mb-md-4">
+      <div class="card h-100 border-primary">
         <img class="card-img-top" src="<%= url_for fishing_area.optimized_image(fishing_area.thumbnail, 220, 180) %>" alt="fishing_area" />
         <div class="card-body">
           <h5 class="card-title">
