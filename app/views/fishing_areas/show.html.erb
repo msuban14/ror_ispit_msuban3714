@@ -30,6 +30,16 @@
       info about creation and owner add accordion or dropdown cards
     </p>
   </div>
+  <br>
+  <div id="comment_pane">
+    <%= will_paginate(@comments, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
+    <% @comments.each do |comment| %>
+      <%= render 'comments/comment', comment: comment %>
+    <% end %>
+    <%= will_paginate(@comments, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
+  </div>
+  <%= link_to 'Leave a comment', new_fishing_area_comment_path(@fishing_area), class:'btn btn-outline-primary float-right' %>
 
+  <br>
 
   </div>

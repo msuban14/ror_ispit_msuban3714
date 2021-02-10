@@ -1,10 +1,11 @@
 class FishingArea < ApplicationRecord
   belongs_to :user
+  has_many :comments, dependent: :destroy
   #active storage
   has_one_attached :thumbnail, dependent: :detach
   after_commit :add_default_thumbnail, on:[:create, :update]
 
-  validates :name, length: {minimum:3}
+  validates :name, length: {minimum:3},presence: true, uniqueness: true
 
   self.per_page=12
 

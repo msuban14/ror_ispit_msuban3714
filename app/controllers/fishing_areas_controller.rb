@@ -12,6 +12,8 @@ class FishingAreasController < ApplicationController
   def show
     views = @fishing_area.views + 1
     @fishing_area.update(views: views)
+
+    @comments = @fishing_area.comments.paginate(page: params[:page], per_page: 5)
   end
 
   # GET /fishing_areas/new
