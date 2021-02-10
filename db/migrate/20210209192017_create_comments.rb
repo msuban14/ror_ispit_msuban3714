@@ -1,6 +1,7 @@
 class CreateComments < ActiveRecord::Migration[6.1]
   def change
-    drop_table :comments #removed last migration when model was destroyed, so we envoke it here, instead of db:rollback
+    #commented out later beacuse the error did not happen in production, and couldn't dropped as it didn't exist
+    #drop_table :comments #removed last migration when model was destroyed, so we envoke it here, instead of db:rollback
 
     create_table :comments do |t|
       t.text :body

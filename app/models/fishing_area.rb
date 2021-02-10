@@ -3,6 +3,7 @@ class FishingArea < ApplicationRecord
   has_many :comments, dependent: :destroy
   #active storage
   has_one_attached :thumbnail, dependent: :detach
+  #if user did not attach image
   after_commit :add_default_thumbnail, on:[:create, :update]
 
   validates :name, length: {minimum:3},presence: true, uniqueness: true
