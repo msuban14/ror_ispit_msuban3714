@@ -1,13 +1,12 @@
 
-<%= simple_form_for(@fishing_area) do |f| %>
+<%= simple_form_for(@body_of_water) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
     <%= f.input :name %>
     <%= f.input :description %>
-    <%= f.association :body_of_water %>
-    <%= f.input :thumbnail %>
+    <%= f.input :water_type, collection: BodyOfWater.water_types.keys, prompt: "Select type"%>
   </div>
 
   <div class="form-actions">

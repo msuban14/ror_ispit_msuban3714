@@ -1,0 +1,19 @@
+
+
+
+
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="display-4"><%= @body_of_water.to_label %> </h1>
+    <hr class="my-4">
+    <p class="lead"><%= @body_of_water.description %></p>
+
+  </div>
+
+
+  <br>
+  <h2> Fishing areas associated to <strong><%= @body_of_water.to_label %></strong> </h2>
+  <%= render 'fishing_areas/list_fishing_areas', fishing_areas: @fishing_areas %>
+  <%= link_to 'Edit', edit_body_of_water_path(@body_of_water) %> |
+  <%= link_to 'Back', body_of_waters_path %>
+  </div>

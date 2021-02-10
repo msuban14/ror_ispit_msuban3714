@@ -25,9 +25,60 @@
       <img class="img-fluid" src="<%= url_for @fishing_area.optimized_image(@fishing_area.thumbnail, 800, 400) %>" alt="fishing_area" width="100%"  />
 
     </div>
-    <p><%= @fishing_area.description%></p>
+
+    <div id="accordion">
+      <div class="card">
+        <div class="card-header" id="headingOne">
+          <h5 class="mb-0">
+            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+              Basic Information
+            </button>
+          </h5>
+        </div>
+
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+          <div class="card-body">
+            <p> Basic info like description and body of water </p>
+            <% if @fishing_area.body_of_water != nil %>
+            <p><%=@fishing_area.body_of_water.name %> <%=@fishing_area.body_of_water.water_type %></p>
+            <% end %>
+            <p class="lead"><%= @fishing_area.description%></p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="headingTwo">
+          <h5 class="mb-0">
+            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              Fishing licence information
+            </button>
+          </h5>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+          <div class="card-body">
+            Information about licence, owner of body of water, fishing region, and game wardens
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="headingThree">
+          <h5 class="mb-0">
+            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              Target fish
+            </button>
+          </h5>
+        </div>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+          <div class="card-body">
+            Generate target fish
+          </div>
+        </div>
+      </div>
+    </div>
+
+
     <p class="lead">
-      info about creation and owner add accordion or dropdown cards
+      info about creation and user owner
     </p>
   </div>
   <br>

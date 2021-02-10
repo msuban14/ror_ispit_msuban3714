@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  resources :body_of_waters
   resources :fishing_areas do
     resources :comments
   end

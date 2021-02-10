@@ -1,0 +1,9 @@
+<div class="list-group">
+  <% body_of_waters.each_with_index do |bow,i| %>
+    <% if i%2 == 0 %>
+      <%= link_to bow.to_label, bow , class: "list-group-item list-group-item-action list-group-item-light" %>
+    <% else %>
+      <%= link_to bow.to_label, bow , class: "list-group-item list-group-item-action list-group-item-dark" %>
+    <% end %>
+  <% end %>
+</div>

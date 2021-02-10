@@ -73,7 +73,7 @@ class FishingAreasController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def fishing_area_params
-      params.require(:fishing_area).permit(:name, :description, :thumbnail)
+      params.require(:fishing_area).permit(:name, :description, :thumbnail, :body_of_water_id)
     end
 
     def is_owner_or_admin

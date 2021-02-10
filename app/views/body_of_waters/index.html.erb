@@ -1,0 +1,36 @@
+
+
+<h1>Bodies Of Water</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+
+      <th colspan="3"></th>
+      <th>Type</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @body_of_waters.each do |body_of_water| %>
+      <tr>
+        <td><%= body_of_water.name %></td>
+        <td colspan="3"></th>
+        <td><%= body_of_water.water_type %></td>
+        <td><%= link_to 'Show', body_of_water %></td>
+        <td><%= link_to 'Edit', edit_body_of_water_path(body_of_water) %></td>
+        <td><%= link_to 'Destroy', body_of_water, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<div class="container">
+  <%= render 'body_of_waters/list_bodies_of_water', body_of_waters: @body_of_waters %>
+  <br>
+  <div class="d-flex justify-content-center">
+    <%= link_to 'New Body Of Water', new_body_of_water_path, class:'btn btn-outline-primary'%>
+  </div>
+</div>

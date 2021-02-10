@@ -1,0 +1,9 @@
+<div class="list-group">
+  <% fishing_areas.each_with_index do |fishing_area,i| %>
+    <% if i%2 == 0 %>
+      <%= link_to fishing_area.name, fishing_area , class: "list-group-item list-group-item-action list-group-item-light" %>
+    <% else %>
+      <%= link_to fishing_area.name, fishing_area , class: "list-group-item list-group-item-action list-group-item-dark" %>
+    <% end %>
+  <% end %>
+</div>

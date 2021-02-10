@@ -1,5 +1,6 @@
 class FishingArea < ApplicationRecord
   belongs_to :user
+  belongs_to :body_of_water
   has_many :comments, dependent: :destroy
   #active storage
   has_one_attached :thumbnail, dependent: :detach
