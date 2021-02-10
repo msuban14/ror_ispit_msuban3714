@@ -1,0 +1,16 @@
+
+<div class="container">
+<h1>Comments for <%= @fishing_area.name %></h1>
+
+<%= will_paginate(@comments, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
+<% @comments.each do |comment| %>
+  <%= render 'comments/comment', comment: comment %>
+<% end %>
+<%= will_paginate(@comments, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
+
+<br>
+
+<div class="d-flex justify-content-center">
+  <%= link_to 'add a comment', new_fishing_area_comment_path, class:'btn btn-outline-primary' %>
+</div>
+</div>

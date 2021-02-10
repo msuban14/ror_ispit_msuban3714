@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="container comment-<%= comment.id % 2 %>">
+    <div class="jumbotron">
+      [<%=comment.created_at.strftime("%I:%M %p") %>]
+       <%= comment.user.username %>
+       <hr>
+
+       <%= comment.body %>
+       <% if current_user && (current_user == comment.user || current_user.admin) %>
+
+       <%= link_to "Delete", fishing_area_comment_path(@fishing_area, comment), class:'btn btn-danger float-right', method: :delete, remote: true %>
+       <%= link_to 'Edit', edit_fishing_area_comment_path(@fishing_area, comment), class:'btn btn-secondary float-right' %>
+       <% end %>
+    </div>
+  </div>
+</div>
