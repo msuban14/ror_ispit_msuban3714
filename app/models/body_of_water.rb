@@ -5,6 +5,6 @@ validates :name, presence:true, length:{maximum: 100}
 has_many :fishing_areas
 
 def to_label
-  "#{name} | type: #{water_type}"
+  "#{name} #{water_type}"
 end
 end

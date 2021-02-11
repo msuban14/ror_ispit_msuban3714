@@ -7,13 +7,22 @@
     <h1 class="display-4"><%= @body_of_water.to_label %> </h1>
     <hr class="my-4">
     <p class="lead"><%= @body_of_water.description %></p>
-
   </div>
-
-
+  <% if current_user.admin %>
+  <div class="d-flex justify-content-center">
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <%= link_to 'Edit', edit_body_of_water_path(@body_of_water), class: "btn btn-primary" %>
+      <%= link_to 'Destroy', @body_of_water, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
+      <%= link_to 'Back', body_of_waters_path, class: "btn btn-secondary" %>
+    </div>
+  </div>
+  <% end %>
   <br>
   <h2> Fishing areas associated to <strong><%= @body_of_water.to_label %></strong> </h2>
   <%= render 'fishing_areas/list_fishing_areas', fishing_areas: @fishing_areas %>
-  <%= link_to 'Edit', edit_body_of_water_path(@body_of_water) %> |
+  <% if current_user.admin %>
+    <%= link_to 'Edit', edit_body_of_water_path(@body_of_water) %>
+    <%= link_to 'Destroy', @body_of_water, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
   <%= link_to 'Back', body_of_waters_path %>
   </div>

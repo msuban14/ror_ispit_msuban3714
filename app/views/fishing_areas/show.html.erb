@@ -39,10 +39,13 @@
         <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
           <div class="card-body">
             <p> Basic info like description and body of water </p>
-            <% if @fishing_area.body_of_water != nil %>
-            <p><%=@fishing_area.body_of_water.name %> <%=@fishing_area.body_of_water.water_type %></p>
+            <% if @fishing_area.country != nil %>
+              <p>Country: <%=@fishing_area.country.name %> </p>
             <% end %>
-            <p class="lead"><%= @fishing_area.description%></p>
+            <% if @fishing_area.body_of_water != nil %>
+              <p>Body of water:<%=@fishing_area.body_of_water.name %> <%=@fishing_area.body_of_water.water_type %></p>
+            <% end %>
+            <p class="lead">Description: <%= @fishing_area.description%></p>
           </div>
         </div>
       </div>

@@ -1,0 +1,23 @@
+<div class="container">
+
+  <h1 class="display-4"><%= @location.to_label %> </h1>
+
+
+  <% if current_user.admin %>
+  <div class="d-flex justify-content-center">
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <%= link_to 'Edit', edit_country_location_path(@country,@location), class: "btn btn-primary" %>
+      <%= link_to 'Destroy', country_location_path(@country,@location), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
+      <%= link_to 'Back', country_locations_path(@country), class: "btn btn-secondary" %>
+    </div>
+  </div>
+  <% end %>
+  <br>
+  <h2> Fishing areas associated to <strong><%= @location.to_label %></strong> </h2>
+  <%= render 'fishing_areas/list_fishing_areas', fishing_areas: @fishing_areas %>
+  <% if current_user.admin %>
+    <%= link_to 'Edit', edit_country_location_path(@country,@location) %>
+    <%= link_to 'Destroy', country_location_path(@country,@location), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+  <%= link_to 'Back', country_locations_path(@country) %>
+  </div>

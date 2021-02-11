@@ -1,6 +1,8 @@
 class FishingArea < ApplicationRecord
   belongs_to :user
   belongs_to :body_of_water
+  belongs_to :country
+  belongs_to :location
   has_many :comments, dependent: :destroy
   #active storage
   has_one_attached :thumbnail, dependent: :detach
@@ -9,7 +11,7 @@ class FishingArea < ApplicationRecord
 
   validates :name, length: {minimum:3},presence: true, uniqueness: true
 
-  self.per_page=12
+  self.per_page=9
 
   def optimized_image(image,x,y)
     image.variant(resize_to_fill: [x, y]).processed

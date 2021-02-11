@@ -1,0 +1,12 @@
+<div class="container">
+
+  <h1>Locations for <%=@country.name%></h1>
+  <%= render 'locations/list_locations', locations: @locations %>
+  <br>
+  <% if current_user.admin %>
+    <div class="d-flex justify-content-center">
+      <%= link_to 'New Locations', new_country_location_path, class:'btn btn-outline-primary'%>
+    </div>
+  <% end %>
+  <%= link_to 'Back', @country %>
+</div>

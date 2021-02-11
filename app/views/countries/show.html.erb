@@ -1,0 +1,31 @@
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>  <%= @country.name %> </h1>
+    </div>
+    <% if current_user.admin %>
+      <div class="col">
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <%= link_to 'Edit', edit_country_path(@country), class: "btn btn-primary" %>
+          <%= link_to 'Destroy', @country, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <br>
+
+  <div class="list-group" >
+    <%= link_to 'Locations', country_locations_path(@country), class: "list-group-item list-group-item-action list-group-item-light", style:"font-size:1.5em;text-align:center;" %>
+    <%= link_to 'Fisheries', country_locations_path(@country), class: "list-group-item list-group-item-action list-group-item-dark ", style:"font-size:1.5em;text-align:center" %>
+
+  </div>
+
+
+  <% if current_user.admin %>
+    <%= link_to 'Edit', edit_country_path(@country) %>
+  <% end %>
+  <%= link_to 'Back', countries_path %>
+</div>
