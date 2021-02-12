@@ -73,6 +73,6 @@ class FisheriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def fishery_params
-      params.require(:fishery).permit(:name, :description, :country_id)
+      params.require(:fishery).permit(:name, :description, :country_id, :licence_issuer_id)
     end
 end

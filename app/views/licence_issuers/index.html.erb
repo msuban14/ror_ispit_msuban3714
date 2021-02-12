@@ -1,0 +1,10 @@
+<div class="container">
+  <h1>Licence issuers</h1>
+  <%= render 'licence_issuers/list_licence_issuers', licence_issuers: @licence_issuers %>
+  <br>
+  <% if current_user.admin %>
+    <div class="d-flex justify-content-center">
+      <%= link_to 'New Licence Issuer', new_licence_issuer_path, class:'btn btn-outline-primary'%>
+    </div>
+  <% end %>
+</div>

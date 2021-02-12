@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>  <%= @licence_issuer.name %> </h1>
+    </div>
+    <% if current_user.admin %>
+      <div class="col">
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <%= link_to 'Edit', edit_licence_issuer_path(@licence_issuer), class: "btn btn-primary" %>
+          <%= link_to 'Destroy', @licence_issuer, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <br>
+
+
+
+  <%= link_to 'Wardens', root_path %>
+  <h2> Fisheries in charge of  <strong><%= @licence_issuer.name %></strong> </h2>
+  <%= render 'fisheries/list_fisheries_wo_c_id', fisheries: @fisheries %>
+
+
+  <% if current_user.admin %>
+    <%= link_to 'Edit', edit_licence_issuer_path(@licence_issuer) %>
+  <% end %>
+  <%= link_to 'Back', countries_path %>
+</div>

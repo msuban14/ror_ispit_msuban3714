@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
 
-
-
-
+  resources :licence_issuers
   resources :countries do
     resources :locations
     resources :fisheries

@@ -1,0 +1,9 @@
+<div class="list-group">
+  <% fisheries.each_with_index do |fishery,i| %>
+    <% if i%2 == 0 %>
+      <%= link_to fishery.to_label, country_fishery_path(fishery.country_id, fishery) , class: "list-group-item list-group-item-action list-group-item-light" %>
+    <% else %>
+      <%= link_to fishery.to_label, country_fishery_path(fishery.country_id, fishery) , class: "list-group-item list-group-item-action list-group-item-dark" %>
+    <% end %>
+  <% end %>
+</div>

@@ -1,7 +1,11 @@
 <div class="container">
 
   <h1 class="display-4"><%= @fishery.to_label %> </h1>
-
+  <% if @fishery.licence_issuer != nil %>
+    <p> Licence issuer: <%= @fishery.licence_issuer.name %> </p>
+  <% else %>
+    <p> Not protected fishery </p>
+  <% end %>
 
   <% if current_user.admin %>
   <div class="d-flex justify-content-center">

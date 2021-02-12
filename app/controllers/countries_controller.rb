@@ -10,7 +10,6 @@ class CountriesController < ApplicationController
 
   # GET /countries/1 or /countries/1.json
   def show
-    #pass fisheries
   end
 
   # GET /countries/new
