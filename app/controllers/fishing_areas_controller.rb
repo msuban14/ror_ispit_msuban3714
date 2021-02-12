@@ -19,7 +19,7 @@ class FishingAreasController < ApplicationController
   # GET /fishing_areas/new
   def new
     @fishing_area = FishingArea.new
-    
+
   end
 
   # GET /fishing_areas/1/edit
@@ -76,7 +76,7 @@ class FishingAreasController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def fishing_area_params
-      params.require(:fishing_area).permit(:name, :description, :thumbnail, :body_of_water_id, :country_id, :location_id)
+      params.require(:fishing_area).permit(:name, :description, :thumbnail, :body_of_water_id, :country_id, :location_id, :fishery_id)
     end
 
     def is_owner_or_admin

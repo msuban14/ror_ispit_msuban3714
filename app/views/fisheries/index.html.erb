@@ -1,0 +1,12 @@
+<div class="container">
+
+  <h1>Fisheries for <%=@country.name%></h1>
+  <%= render 'fisheries/list_fisheries', fisheries: @fisheries %>
+  <br>
+  <% if current_user.admin %>
+    <div class="d-flex justify-content-center">
+      <%= link_to 'New Fishery', new_country_fishery_path, class:'btn btn-outline-primary'%>
+    </div>
+  <% end %>
+  <%= link_to 'Back', @country %>
+</div>

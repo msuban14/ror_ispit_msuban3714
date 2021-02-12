@@ -2,8 +2,10 @@ Rails.application.routes.draw do
 
 
 
+
   resources :countries do
     resources :locations
+    resources :fisheries
   end
   resources :body_of_waters
   resources :fishing_areas do

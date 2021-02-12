@@ -32,10 +32,16 @@ $(document).ready(function(){
         $('#fishing_area_location_id').parent().show();
         $("#fishing_area_location_id").children("optgroup").hide();
         $("#fishing_area_location_id").children("optgroup[label='" + arr + "']").show();
+
+        $('#fishing_area_fishery_id').parent().show();
+        $("#fishing_area_fishery_id").children("optgroup").hide();
+        $("#fishing_area_fishery_id").children("optgroup[label='" + arr + "']").show();
       } else {
         //uncomment in case of disabling the show/hide for location
         //$("#fishing_area_location_id").children("optgroup").show();
+        //$("#fishing_area_fishery_id").children("optgroup").show();
         $('#fishing_area_location_id').parent().hide();
+        $('#fishing_area_fishery_id').parent().hide();
       }
     });
 

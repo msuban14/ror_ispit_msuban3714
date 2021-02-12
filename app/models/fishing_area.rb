@@ -3,6 +3,7 @@ class FishingArea < ApplicationRecord
   belongs_to :body_of_water
   belongs_to :country
   belongs_to :location
+  belongs_to :fishery
   has_many :comments, dependent: :destroy
   #active storage
   has_one_attached :thumbnail, dependent: :detach

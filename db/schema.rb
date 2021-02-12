@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_11_173917) do
+ActiveRecord::Schema.define(version: 2021_02_12_092047) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -64,6 +64,15 @@ ActiveRecord::Schema.define(version: 2021_02_11_173917) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "fisheries", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "country_id", null: false
+    t.index ["country_id"], name: "index_fisheries_on_country_id"
+  end
+
   create_table "fishing_areas", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -74,8 +83,10 @@ ActiveRecord::Schema.define(version: 2021_02_11_173917) do
     t.integer "body_of_water_id"
     t.integer "country_id"
     t.integer "location_id"
+    t.integer "fishery_id"
     t.index ["body_of_water_id"], name: "index_fishing_areas_on_body_of_water_id"
     t.index ["country_id"], name: "index_fishing_areas_on_country_id"
+    t.index ["fishery_id"], name: "index_fishing_areas_on_fishery_id"
     t.index ["location_id"], name: "index_fishing_areas_on_location_id"
     t.index ["user_id"], name: "index_fishing_areas_on_user_id"
   end
@@ -106,5 +117,6 @@ ActiveRecord::Schema.define(version: 2021_02_11_173917) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "fishing_areas"
   add_foreign_key "comments", "users"
+  add_foreign_key "fisheries", "countries"
   add_foreign_key "locations", "countries"
 end
