@@ -16,7 +16,7 @@
 
 
 
-  <%= link_to 'Wardens', root_path %>
+  <%= link_to 'Wardens', licence_issuer_fish_wardens_path(@licence_issuer),class: "btn btn-primary" %>
   <h2> Fisheries in charge of  <strong><%= @licence_issuer.name %></strong> </h2>
   <%= render 'fisheries/list_fisheries_wo_c_id', fisheries: @fisheries %>
 

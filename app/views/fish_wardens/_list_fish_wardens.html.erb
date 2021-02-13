@@ -1,0 +1,32 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Fish warden</th>
+      <th scope="col"> Phone Number </th>
+      <% if current_user.admin %>
+      <th></th>
+      <th></th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% fish_wardens.each_with_index do |fw,i| %>
+      <tr>
+        <td>
+          <%= fw.name %>
+        </td>
+        <td>
+          <%= link_to fw.phone, "tel:#{fw.phone}" %>
+        </td>
+        <% if current_user.admin %>
+          <td>
+            <%= link_to 'Edit', edit_licence_issuer_fish_warden_path(@licence_issuer,fw) %>
+          </td>
+          <td>
+            <%= link_to 'Destroy', licence_issuer_fish_warden_path(@licence_issuer,fw), method: :delete, data: { confirm: 'Are you sure?' } %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

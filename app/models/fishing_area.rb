@@ -5,6 +5,7 @@ class FishingArea < ApplicationRecord
   belongs_to :location
   belongs_to :fishery
   has_many :comments, dependent: :destroy
+  has_and_belongs_to_many :fish
   #active storage
   has_one_attached :thumbnail, dependent: :detach
   #if user did not attach image

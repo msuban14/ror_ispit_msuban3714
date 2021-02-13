@@ -1,7 +1,7 @@
 class CountriesController < ApplicationController
   before_action :set_country, only: %i[ show edit update destroy ]
   before_action :authenticate_user!
-  before_action :is_admin!, only: [:create, :edit, :update, :destroy]
+  before_action :is_admin!,  except: [:index , :show]
 
   # GET /countries or /countries.json
   def index

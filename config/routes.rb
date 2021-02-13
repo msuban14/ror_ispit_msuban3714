@@ -1,11 +1,18 @@
 Rails.application.routes.draw do
 
-  resources :licence_issuers
+  resources :fish
+  
+  resources :licence_issuers do
+    resources :fish_wardens
+  end
+
   resources :countries do
     resources :locations
     resources :fisheries
   end
+
   resources :body_of_waters
+
   resources :fishing_areas do
     resources :comments
   end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_12_133112) do
+ActiveRecord::Schema.define(version: 2021_02_13_091853) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -62,6 +62,30 @@ ActiveRecord::Schema.define(version: 2021_02_12_133112) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "fish", force: :cascade do |t|
+    t.string "name"
+    t.string "latin_name"
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "fish_fishing_areas", id: false, force: :cascade do |t|
+    t.integer "fishing_area_id", null: false
+    t.integer "fish_id", null: false
+    t.index ["fish_id"], name: "index_fish_fishing_areas_on_fish_id"
+    t.index ["fishing_area_id"], name: "index_fish_fishing_areas_on_fishing_area_id"
+  end
+
+  create_table "fish_wardens", force: :cascade do |t|
+    t.string "name"
+    t.string "phone"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "licence_issuer_id", null: false
+    t.index ["licence_issuer_id"], name: "index_fish_wardens_on_licence_issuer_id"
   end
 
   create_table "fisheries", force: :cascade do |t|
@@ -125,6 +149,7 @@ ActiveRecord::Schema.define(version: 2021_02_12_133112) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "fishing_areas"
   add_foreign_key "comments", "users"
+  add_foreign_key "fish_wardens", "licence_issuers"
   add_foreign_key "fisheries", "countries"
   add_foreign_key "locations", "countries"
 end

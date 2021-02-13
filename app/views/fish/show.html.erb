@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="display-4"><%= @fish.name %> (<i><%= @fish.latin_name %></i>) </h1>
+    <hr class="my-4">
+    <p class="lead"><%= @fish.description %></p>
+  </div>
+  <% if current_user.admin %>
+  <div class="d-flex justify-content-center">
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <%= link_to 'Edit', edit_fish_path(@fish), class: "btn btn-primary" %>
+      <%= link_to 'Destroy', @fish, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
+      <%= link_to 'Back', fish_index_url, class: "btn btn-secondary" %>
+    </div>
+  </div>
+  <% end %>
+  <br>
+  <h2> Fishing areas where <strong><%= @fish.name.pluralize %></strong> can be targeted   </h2>
+  <%= render 'fishing_areas/list_fishing_areas', fishing_areas: @fish.fishing_areas %>
+  <% if current_user.admin %>
+    <%= link_to 'Edit', edit_fish_path(@fish) %>
+    <%= link_to 'Destroy', @fish, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+  <%= link_to 'Back', fish_path %>
+  </div>

@@ -1,7 +1,7 @@
 class BodyOfWatersController < ApplicationController
   before_action :set_body_of_water, only: %i[ show edit update destroy ]
   before_action :authenticate_user!
-  before_action :is_admin!, only: [:create, :edit, :update, :destroy]
+  before_action :is_admin!, except: [:index, :show]
   # GET /body_of_waters or /body_of_waters.json
   def index
     @body_of_waters = BodyOfWater.all

@@ -10,6 +10,7 @@
     <%= f.input :fishery_id, collection: Country.all.order(:name), as: :grouped_select, group_method: :fisheries %>
     <%= f.input :description %>
     <%= f.association :body_of_water %>
+    <%= f.association :fish, as: :check_boxes %>
     <%= f.input :thumbnail %>
   </div>
 

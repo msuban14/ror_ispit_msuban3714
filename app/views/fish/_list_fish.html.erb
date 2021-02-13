@@ -1,0 +1,9 @@
+<div class="list-group">
+  <% fish.each_with_index do |f,i| %>
+    <% if i%2 == 0 %>
+      <%= link_to "#{f.name} | (#{f.latin_name})", f , class: "list-group-item list-group-item-action list-group-item-light" %>
+    <% else %>
+      <%= link_to "#{f.name} | (#{f.latin_name})", f , class: "list-group-item list-group-item-action list-group-item-dark" %>
+    <% end %>
+  <% end %>
+</div>

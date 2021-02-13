@@ -2,7 +2,7 @@ class LocationsController < ApplicationController
   before_action :set_country
   before_action :set_location, only: %i[ show edit update destroy ]
   before_action :authenticate_user!
-  before_action :is_admin!, only: [:create, :edit, :update, :destroy]
+  before_action :is_admin!,  except: [:index , :show]
 
   # GET /locations or /locations.json
   def index

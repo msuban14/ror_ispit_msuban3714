@@ -1,0 +1,9 @@
+
+<div class="container">
+  <h1>Fish Wardens employed by <%= @licence_issuer.name %></h1>
+
+  <%= render 'fish_wardens/list_fish_wardens', fish_wardens: @fish_wardens %>
+  <br>
+
+  <%= link_to 'New Fish Warden', new_licence_issuer_fish_warden_path %>
+</div>
