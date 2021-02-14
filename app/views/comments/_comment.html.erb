@@ -1,7 +1,7 @@
 <div class="row">
   <div class="container comment-<%= comment.id % 2 %>">
     <div class="jumbotron">
-      [<%=comment.created_at.strftime("%I:%M %p") %>]
+      [<%=comment.created_at.strftime("%d.%m.%Y %H:%M ") %>]
        <%= comment.user.username %>
        <hr>
 

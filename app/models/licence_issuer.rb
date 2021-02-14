@@ -3,5 +3,8 @@ class LicenceIssuer < ApplicationRecord
   has_many :fisheries
   has_many :fish_wardens
 
-  
+  def to_label
+    "#{name}"
+  end
+
 end

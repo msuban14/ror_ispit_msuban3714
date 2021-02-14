@@ -3,4 +3,9 @@ class Country < ApplicationRecord
   has_many :fishin_areas
   has_many :locations, dependent: :destroy
   has_many :fisheries, dependent: :destroy
+
+
+  def to_label
+    "#{name}"
+  end
 end

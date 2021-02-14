@@ -1,0 +1,7 @@
+<div class="row row-cols-1 row-cols-md-6">
+  <% fish.each do |f| %>
+    <div class="col">
+      <%= link_to f.name, fish_path(f.id) %>
+    </div>
+  <% end %>
+</div>

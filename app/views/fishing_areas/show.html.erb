@@ -35,17 +35,31 @@
             </button>
           </h5>
         </div>
-
         <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
           <div class="card-body">
-            <p> Basic info like description and body of water </p>
             <% if @fishing_area.country != nil %>
-              <p>Country: <%=@fishing_area.country.name %> </p>
+              <%= render "fishing_areas/show_fishing_area_item", item: @fishing_area.country, title:"Country", pathf: country_path(@fishing_area.country.id) %>
+            <% end %>
+            <% if @fishing_area.location != nil %>
+              <%= render "fishing_areas/show_fishing_area_item", item: @fishing_area.location, title:"Location", pathf: country_location_path(@fishing_area.location.country.id,@fishing_area.location.id) %>
             <% end %>
             <% if @fishing_area.body_of_water != nil %>
-              <p>Body of water:<%=@fishing_area.body_of_water.name %> <%=@fishing_area.body_of_water.water_type %></p>
+              <%= render "fishing_areas/show_fishing_area_item", item: @fishing_area.body_of_water, title:"Body of water", pathf: body_of_water_path(@fishing_area.body_of_water.id) %>
             <% end %>
-            <p class="lead">Description: <%= @fishing_area.description%></p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="headingFour">
+          <h5 class="mb-0">
+            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+              Description
+            </button>
+          </h5>
+        </div>
+        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+          <div class="card-body">
+            <p><%= @fishing_area.description%></p>
           </div>
         </div>
       </div>
@@ -59,7 +73,12 @@
         </div>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
           <div class="card-body">
-            Information about licence, owner of body of water, fishing region, and game wardens
+            <% if @fishing_area.fishery != nil %>
+              <%= render "fishing_areas/show_fishing_area_item", item: @fishing_area.fishery, title:"Fishery", pathf: country_fishery_path(@fishing_area.fishery.country.id,@fishing_area.fishery.id) %>
+              <% if @fishing_area.fishery.licence_issuer != nil %>
+                <%= render "fishing_areas/show_fishing_area_item", item: @fishing_area.fishery.licence_issuer, title:"Licence issuer", pathf: licence_issuer_path(@fishing_area.fishery.licence_issuer.id) %>
+              <% end %>
+            <% end %>
           </div>
         </div>
       </div>
@@ -73,15 +92,16 @@
         </div>
         <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
           <div class="card-body">
-            Generate target fish
+              <%= render "fishing_areas/target_fish", fish: @fishing_area.fish%>
           </div>
         </div>
       </div>
     </div>
 
 
-    <p class="lead">
-      info about creation and user owner
+    <p class="text-muted text-right">
+
+      Created at <%= @fishing_area.created_at.strftime("%d.%m.%Y %H:%M:%S")%> by <%= @fishing_area.user.username %>
     </p>
   </div>
   <br>
